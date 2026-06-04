@@ -1,4 +1,4 @@
-import { Link } from '@studio-freight/compono'
+import Link from 'next/link'
 import cn from 'clsx'
 import { Navigation } from 'components/navigation'
 import { useStore } from 'libs/store'

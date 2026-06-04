@@ -1,6 +1,6 @@
 import { GradientTexture } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
-import { useDebug } from '@studio-freight/hamo'
+import { useDebug } from 'libs/hooks'
 import { GUI } from 'libs/gui'
 import { useCanvas } from 'libs/webgl/hooks/use-canvas'
 import { useEffect, useMemo, useRef, useState } from 'react'

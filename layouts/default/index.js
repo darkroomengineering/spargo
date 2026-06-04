@@ -1,5 +1,5 @@
-import { CustomHead } from '@studio-freight/compono'
-import { Lenis, useLenis } from '@studio-freight/react-lenis'
+import { CustomHead } from 'components/custom-head'
+import { ReactLenis as Lenis, useLenis } from 'lenis/react'
 import cn from 'clsx'
 import Router from 'next/router'
 import { useEffect } from 'react'

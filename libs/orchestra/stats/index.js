@@ -1,4 +1,4 @@
-import { useFrame } from '@studio-freight/hamo'
+import { useFrame } from 'libs/hooks'
 import { useEffect, useMemo } from 'react'
 import _Stats from 'stats.js'
 import s from './stats.module.scss'

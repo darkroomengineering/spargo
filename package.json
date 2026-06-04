@@ -19,10 +19,9 @@
     "@radix-ui/react-select": "^1.2.0",
     "@react-three/drei": "9.80.0",
     "@react-three/fiber": "8.13.6",
-    "@studio-freight/compono": "^0.0.21",
-    "@studio-freight/hamo": "^0.6.19",
-    "@studio-freight/react-lenis": "^0.0.25",
-    "@studio-freight/tempus": "^0.0.38",
+    "hamo": "1.0.0-dev.10",
+    "lenis": "^1.3.23",
+    "tempus": "1.0.0-dev.17",
     "@theatre/core": "^0.6.1",
     "@theatre/r3f": "0.6.1-dev.4",
     "@theatre/studio": "^0.6.1",
@@ -72,7 +71,6 @@
   },
   "pnpm": {
     "overrides": {
-      "@studio-freight/react-lenis": "0.0.25",
       "scheduler": "0.23.0"
     }
   },

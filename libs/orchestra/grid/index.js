@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@studio-freight/hamo'
+import { useMediaQuery } from 'libs/hooks'
 import cn from 'clsx'
 import { useMemo } from 'react'
 import s from './grid.module.scss'

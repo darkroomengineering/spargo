@@ -1,5 +1,5 @@
-import { useFrame } from '@studio-freight/hamo'
-import { useLenis } from '@studio-freight/react-lenis'
+import { useFrame } from 'libs/hooks'
+import { useLenis } from 'lenis/react'
 import { createRafDriver } from '@theatre/core'
 import extension from '@theatre/r3f/dist/extension'
 import studio from '@theatre/studio'

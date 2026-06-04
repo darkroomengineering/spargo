@@ -20,7 +20,7 @@ const sassVars = require(__dirname + '/config/variables.js')
 
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@studio-freight/compono'],
+  transpilePackages: ['lenis', 'hamo', 'tempus'],
   experimental: {
     optimizeCss: true,
     legacyBrowsers: false,

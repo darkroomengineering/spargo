@@ -1,4 +1,4 @@
-import { useMediaQuery } from '@studio-freight/hamo'
+import { useMediaQuery } from 'libs/hooks'
 import variables from 'config/variables'
 import { createContext, useContext } from 'react'
 

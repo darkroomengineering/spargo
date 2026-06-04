@@ -1,4 +1,4 @@
-import { useFrame } from '@studio-freight/hamo'
+import { useFrame } from 'libs/hooks'
 import { createRafDriver, getProject } from '@theatre/core'
 import {
   createContext,
