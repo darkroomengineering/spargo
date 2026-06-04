@@ -8,10 +8,10 @@ Real-time GPU image dithering in the browser, via WebGL.
 
 ## Features
 
-- Real-time image dithering on the GPU, via WebGL
-- Runs entirely in the browser, with no upload and no server
-- Scatters pixels to simulate tone and shade
-- Interactive live demo
+- **GPU dithering** — real-time image dithering on the GPU via WebGL
+- **Browser-only** — runs entirely client-side, with no upload and no server
+- **Tone from scatter** — scatters pixels to simulate shade and tone
+- **Live demo** — interactive, right in the browser
 
 ---
 
