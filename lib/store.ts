@@ -38,7 +38,8 @@ export type DitheringConfig = z.infer<typeof configSchema>
 export const DEFAULT_CONFIG: DitheringConfig = {
   gammaCorrection: 1,
   granularity: 1,
-  color: { r: 0, g: 0, b: 1 },
+  // Darkroom red (#e30613)
+  color: { r: 0.8902, g: 0.0235, b: 0.0745 },
   opacity: 1,
   mode: 'DOT_DIAGONAL_16x16',
 }
