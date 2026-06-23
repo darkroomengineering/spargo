@@ -3,13 +3,7 @@
 import { Select } from '@base-ui/react/select'
 import { useRef } from 'react'
 import { RgbColorPicker } from 'react-colorful'
-import {
-  configSchema,
-  DEFAULT_CONFIG,
-  DITHER_MODES,
-  type RGB,
-  useStore,
-} from '@/lib/store'
+import { configSchema, DITHER_MODES, type RGB, useStore } from '@/lib/store'
 import { ColorField } from './color-field'
 import { SliderField } from './slider-field'
 
@@ -46,8 +40,9 @@ export function Controls() {
   }
 
   function exportConfig() {
-    const { color: c } = useStore.getState()
-    const config = { gammaCorrection, granularity, color: c, opacity, mode }
+    const { gammaCorrection, granularity, color, opacity, mode } =
+      useStore.getState()
+    const config = { gammaCorrection, granularity, color, opacity, mode }
     const blob = new Blob([JSON.stringify(config, null, 2)], {
       type: 'application/json',
     })
@@ -214,10 +209,7 @@ export function Controls() {
         <button
           type="button"
           className="col-span-2 rounded-md border border-[var(--color-border)] px-2 py-1.5 text-white/60 hover:bg-white/10"
-          onClick={() => {
-            resetConfig()
-            loadConfig(DEFAULT_CONFIG)
-          }}
+          onClick={resetConfig}
         >
           Reset
         </button>
