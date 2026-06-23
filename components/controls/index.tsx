@@ -3,13 +3,7 @@
 import { Select } from '@base-ui/react/select'
 import { useRef } from 'react'
 import { RgbColorPicker } from 'react-colorful'
-import {
-  configSchema,
-  DEFAULT_CONFIG,
-  DITHER_MODES,
-  type RGB,
-  useStore,
-} from '@/lib/store'
+import { configSchema, DITHER_MODES, type RGB, useStore } from '@/lib/store'
 import { ColorField } from './color-field'
 import { SliderField } from './slider-field'
 
@@ -46,8 +40,9 @@ export function Controls() {
   }
 
   function exportConfig() {
-    const { color: c } = useStore.getState()
-    const config = { gammaCorrection, granularity, color: c, opacity, mode }
+    const { gammaCorrection, granularity, color, opacity, mode } =
+      useStore.getState()
+    const config = { gammaCorrection, granularity, color, opacity, mode }
     const blob = new Blob([JSON.stringify(config, null, 2)], {
       type: 'application/json',
     })
@@ -83,7 +78,9 @@ export function Controls() {
       aria-label="Dithering controls"
     >
       <header className="flex items-baseline justify-between">
-        <h1 className="font-bold text-sm uppercase tracking-[0.2em]">spargo</h1>
+        <h1 className="font-bold font-display text-[var(--color-red)] text-lg uppercase tracking-[0.25em]">
+          spargo
+        </h1>
         <span className="text-[10px] text-white/40">GPU dithering</span>
       </header>
 
@@ -189,7 +186,7 @@ export function Controls() {
         </button>
         <button
           type="button"
-          className="rounded-md border border-[var(--color-border)] px-2 py-1.5 hover:bg-white/10 data-[recording=true]:border-red-400 data-[recording=true]:text-red-300"
+          className="rounded-md border border-[var(--color-border)] px-2 py-1.5 hover:bg-white/10 data-[recording=true]:border-[var(--color-red)] data-[recording=true]:text-[var(--color-red)]"
           data-recording={recording}
           onClick={() =>
             runAction(recording ? 'stopRecording' : 'startRecording')
@@ -214,10 +211,7 @@ export function Controls() {
         <button
           type="button"
           className="col-span-2 rounded-md border border-[var(--color-border)] px-2 py-1.5 text-white/60 hover:bg-white/10"
-          onClick={() => {
-            resetConfig()
-            loadConfig(DEFAULT_CONFIG)
-          }}
+          onClick={resetConfig}
         >
           Reset
         </button>

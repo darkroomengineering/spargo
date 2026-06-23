@@ -3,8 +3,9 @@
 import { useThree } from '@react-three/fiber'
 import { useEffect, useMemo, useRef } from 'react'
 import { useStore } from '@/lib/store'
-import { Image, type MediaHandle } from '../image'
+import { Image } from '../image'
 import { Model } from '../model'
+import type { MediaHandle } from '../textured-plane'
 import { Video } from '../video'
 
 const PLACEHOLDER = '/placeholder/3.jpg'

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CanvasTexture, Color, NearestFilter, Vector2 } from 'three'
 import { useStore } from '@/lib/store'
 import { ORDERED_DITHERERS } from '@/webgl/utils/ordered-ditherers'
@@ -32,11 +32,11 @@ export function useDitheringEffect() {
     effect.opacity = opacity
   }, [effect, opacity])
 
-  const colorInstance = useMemo(() => new Color(), [])
+  const colorRef = useRef(new Color())
   useEffect(() => {
-    colorInstance.setRGB(color.r, color.g, color.b)
-    effect.color = colorInstance
-  }, [effect, color, colorInstance])
+    colorRef.current.setRGB(color.r, color.g, color.b)
+    effect.color = colorRef.current
+  }, [effect, color])
 
   useEffect(() => {
     if (mode === 'RANDOM') {
