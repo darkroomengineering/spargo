@@ -1,72 +1,56 @@
-# [PROJECT]
+# Spargo — Engineering
+
+Real-time GPU image dithering. Single-screen client-side WebGL tool.
 
 ## Setup
 
-The usual process for Next.js based apps/websites:
+1. Install dependencies (requires [Bun](https://bun.sh) ≥ 1.3):
 
-1. Install node modules:
+   ```bash
+   bun install
+   ```
 
-   `$ pnpm i`
+2. (Optional) Link Vercel + pull env vars — Spargo needs none to run locally, but linking enables `vercel` CLI deploys:
 
-2. Get the .env variables from Vercel (check `.env.template`), after [installing Vercel CLI](https://vercel.com/docs/cli):
+   ```bash
+   bunx vercel link
+   bunx vercel env pull
+   ```
 
-   `$ vc link`
+3. Run the dev server:
 
-   `$ vc env pull`
+   ```bash
+   bun dev          # http://localhost:3000 (Turbopack)
+   ```
 
-3. run development environment:
+## Scripts
 
-   `$ pnpm dev`
+| Command | Description |
+| --- | --- |
+| `bun dev` | Dev server (Turbopack) |
+| `bun run build` | Production build |
+| `bun start` | Serve the production build |
+| `bun run check` | `biome check` + `tsc --noEmit` |
+| `bun run lint` / `lint:fix` | Biome lint |
+| `bun run format` | Biome format |
 
 ## Stack
 
-- [Lenis](https://github.com/darkroomengineering/lenis)
-- [Tempus](https://github.com/darkroomengineering/tempus)
-- [Hamo](https://github.com/darkroomengineering/hamo)
-- [PNPM](https://pnpm.io/)
-- [Next.js](https://nextjs.org/)
-- [Three.js](https://threejs.org/)
-- [@react-three/drei](https://github.com/pmndrs/drei)
-- [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
-- [GSAP](https://greensock.com/gsap/)
-- [Embla Carousel](https://github.com/davidcetinkaya/embla-carousel)
-- Sass (Modules)
-- [Zustand](https://github.com/pmndrs/zustand)
-- [React Hook Form](https://react-hook-form.com/)
-- GraphQL (CMS API)
-- [Next-Sitemap](https://github.com/iamvishnusankar/next-sitemap) (postbuild script)
-- [@svgr/webpack](https://github.com/gregberge/svgr/tree/main) (SVG Imports in `next.config.js`)
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router) + [React 19](https://react.dev)
+- **Language:** TypeScript (strict)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com) + CSS Modules
+- **UI:** [Base UI](https://base-ui.com) + [react-colorful](https://github.com/omgovich/react-colorful)
+- **WebGL:** [three.js](https://threejs.org/), [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber), [@react-three/drei](https://github.com/pmndrs/drei), [postprocessing](https://github.com/pmndrs/postprocessing)
+- **State:** [Zustand](https://github.com/pmndrs/zustand) + [Zod](https://zod.dev) (config validation)
+- **Tooling:** [Bun](https://bun.sh) (pm + runtime), [Biome](https://biomejs.dev) (lint/format), [Lefthook](https://github.com/evilmartians/lefthook) (pre-commit)
+- **Hosting:** [Vercel](https://vercel.com/) — `spargo.darkroom.engineering`
 
-## Code Style & Linting
+## Architecture
 
-- Eslint ([Next](https://nextjs.org/docs/basic-features/eslint#eslint-config) and [Prettier](https://github.com/prettier/eslint-config-prettier) plugins)
-- [Prettier](https://prettier.io/) with the following settings available in `.pretierrc`:
-  ```json
-  {
-    "endOfLine": "auto",
-    "semi": false,
-    "singleQuote": true
-  }
-  ```
-- [Husky + lint-staged precommit hooks](https://github.com/okonet/lint-staged)
+- `app/` — App Router entry (`layout.tsx` holds metadata, `page.tsx` renders the canvas + controls).
+- `components/controls/` — Base UI control panel (the product UI).
+- `lib/store.ts` — Zustand store: dithering config + loaded file + canvas-registered export/record actions. Zod schema validates imported configs.
+- `lib/webgl/` — R3F canvas, the `DitheringEffect` postprocessing pass, media components (image/video/model), and the ordered-dither matrices.
+- `lib/hooks/`, `lib/styles/` — shared hooks and global CSS / Tailwind theme.
 
-## Third Party
-
-- [Contentful Headless CMS (GraphQL API)](https://contentful.com/)
-- [Mailchimp CRM](https://mailchimp.com/)
-- [Hubspot CRM](https://hubspot.com/)
-- [Vercel (Hosting & Continuous Deployment)](https://vercel.com/home)
-- [GitHub Versioning](https://github.com/)
-
-## Folder Structure
-
-Alongside the usual Next.js folder structure (`/public`, `/pages`, etc.) We've added a few other folders to keep the code easier to read:
-
-- **/assets:** General Images/Videos and SVGs
-- **/components:** Reusable components with their respective Sass file
-- **/contentful:** Fragments/Queries/Renderers
-- **/config:** General settings (mostly Leva for now)
-- **/hooks:** Reusable Custom Hooks
-- **/layouts:** High level layout component
-- **/lib:** Reusable Scripts and State Store
-- **/styles:** Global styles and Sass partials
+The DOM control panel and the in-canvas effect share the Zustand store: controls write config, `useDitheringEffect` reads it and pushes uniforms / rebuilds the matrix texture on the GPU.

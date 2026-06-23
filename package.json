@@ -1,86 +1,62 @@
 {
-  "packageManager": "pnpm@8.15.9",
-  "name": "satus",
-  "version": "1.1.0",
+  "name": "spargo",
+  "description": "Real-time GPU image dithering in the browser, via WebGL. By darkroom.engineering.",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "*.css"
+  ],
+  "packageManager": "bun@1.3.5",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postbuild": "next-sitemap",
-    "analyze": "cross-env ANALYZE=true next build",
-    "prepare": "husky install",
-    "size": "npm run build && size-limit"
+    "check": "biome check && tsc --noEmit",
+    "lint": "biome lint --max-diagnostics=200",
+    "lint:fix": "biome lint --write --unsafe --max-diagnostics=200",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "^9.2.0",
-    "@radix-ui/react-accordion": "^1.0.0",
-    "@radix-ui/react-select": "^1.2.0",
-    "@react-three/drei": "9.80.0",
-    "@react-three/fiber": "8.13.6",
-    "hamo": "1.0.0-dev.10",
-    "lenis": "^1.3.23",
+    "@base-ui/react": "^1.5.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@vercel/analytics": "^2.0.1",
+    "clsx": "^2.1.1",
+    "hamo": "1.0.0-dev.13",
+    "next": "16.2.9",
+    "postprocessing": "^6.39.1",
+    "react": "19.2.7",
+    "react-colorful": "^5.6.1",
+    "react-dom": "19.2.7",
     "tempus": "1.0.0-dev.17",
-    "@theatre/core": "^0.6.1",
-    "@theatre/r3f": "0.6.1-dev.4",
-    "@theatre/studio": "^0.6.1",
-    "clsx": "^1.2.1",
-    "cross-env": "^7.0.3",
-    "duplicate-package-checker-webpack-plugin": "^3.0.0",
-    "embla-carousel": "7.1.0",
-    "embla-carousel-autoplay": "7.1.0",
-    "embla-carousel-react": "7.1.0",
-    "glslify-loader": "^2.0.0",
-    "gsap": "3.12.2",
-    "idb-keyval": "^6.2.1",
-    "jsonminify": "^0.4.2",
-    "lint-staged": "^13.1.0",
-    "lottie-web": "^5.10.2",
-    "next": "13.4.9",
-    "next-pwa": "5.6.0",
-    "next-seo": "^5.15.0",
-    "next-sitemap": "^4.1.8",
-    "next-transpile-modules": "^9.1.0",
-    "postprocessing": "6.32.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-dropzone": "^14.2.3",
-    "sass": "^1.63.6",
-    "stats.js": "^0.17.0",
-    "suspend-react": "^0.1.3",
-    "three": "0.155.0",
+    "three": "0.184.0",
     "tunnel-rat": "^0.1.2",
-    "tweakpane": "4.0.0",
-    "zustand": "4.3.9"
+    "zod": "^4.4.3",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@builder.io/partytown": "^0.8.0",
-    "@cerner/duplicate-package-checker-webpack-plugin": "^2.3.0",
-    "@next/bundle-analyzer": "^13.4.9",
-    "@size-limit/preset-app": "^8.2.6",
-    "@svgr/webpack": "^8.0.1",
-    "critters": "^0.0.19",
-    "cross-env": "^7.0.3",
-    "eslint": "8.44.0",
-    "eslint-config-next": "^13.4.9",
-    "eslint-config-prettier": "^8.8.0",
-    "husky": "^8.0.3",
-    "prettier": "^3.0.0",
-    "prettier-eslint": "^15.0.1"
+    "@biomejs/biome": "2.5.0",
+    "@next/bundle-analyzer": "16.2.9",
+    "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.184.0",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "lefthook": "^2.1.9",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3"
   },
-  "pnpm": {
-    "overrides": {
-      "scheduler": "0.23.0"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,scss,md}": "prettier --write"
-  },
-  "size-limit": [
-    {
-      "path": ".next/static/chunks/**/*.js"
-    }
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@tailwindcss/oxide",
+    "esbuild",
+    "lefthook",
+    "sharp"
   ]
 }
