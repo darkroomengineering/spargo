@@ -1,0 +1,144 @@
+{
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+      "!node_modules",
+      "!**/.next",
+      "!**/dist",
+      "!**/public",
+      "!.github",
+      "!.vercel",
+      "!bun.lock",
+      "!**/*.md",
+      "!**/*.mdx"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "next": "recommended",
+      "react": "recommended",
+      "project": "recommended"
+    },
+    "rules": {
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
+        "noUnusedFunctionParameters": "warn",
+        "useExhaustiveDependencies": "warn"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error",
+        "useConsistentArrayType": "error",
+        "useShorthandAssign": "error",
+        "useExponentiationOperator": "error",
+        "noNestedTernary": "error",
+        "useFilenamingConvention": {
+          "level": "warn",
+          "options": {
+            "filenameCases": ["kebab-case", "camelCase"],
+            "strictCase": false
+          }
+        }
+      },
+      "suspicious": {
+        "noExplicitAny": "error",
+        "noDoubleEquals": "error",
+        "noConsole": "off"
+      },
+      "security": {
+        "noGlobalEval": "error",
+        "noDangerouslySetInnerHtml": "warn"
+      },
+      "a11y": {
+        "useButtonType": "error",
+        "useAltText": "error",
+        "useValidAriaProps": "error",
+        "useKeyWithClickEvents": "warn"
+      },
+      "performance": {
+        "noImgElement": "error"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "attributes": ["class", "className"],
+            "functions": ["cn", "clsx"]
+          }
+        }
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "es5"
+    }
+  },
+  "json": {
+    "parser": {
+      "allowComments": true
+    }
+  },
+  "css": {
+    "linter": { "enabled": true },
+    "formatter": { "enabled": true },
+    "parser": {
+      "cssModules": true,
+      "tailwindDirectives": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.ts", "**/*.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useImportType": "error",
+            "useExportType": "error"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["app/**/*.tsx", "app/**/*.ts"],
+      "linter": {
+        "rules": {
+          "style": { "noDefaultExport": "off" }
+        }
+      }
+    }
+  ]
+}
