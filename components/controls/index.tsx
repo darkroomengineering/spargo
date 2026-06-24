@@ -3,6 +3,7 @@
 import { Select } from '@base-ui/react/select'
 import { useRef } from 'react'
 import { RgbColorPicker } from 'react-colorful'
+import DarkroomLogo from '@/components/ui/darkroom.svg'
 import { configSchema, DITHER_MODES, type RGB, useStore } from '@/lib/store'
 import { ColorField } from './color-field'
 import { SliderField } from './slider-field'
@@ -216,6 +217,16 @@ export function Controls() {
           Reset
         </button>
       </div>
+
+      <a
+        href="https://darkroom.engineering"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 border-[var(--color-border)] border-t pt-3 text-[10px] text-white/35 uppercase tracking-wider transition-colors hover:text-white/70"
+      >
+        built by
+        <DarkroomLogo aria-label="Darkroom" className="h-3.5 w-auto" />
+      </a>
 
       <input
         ref={importInputRef}
