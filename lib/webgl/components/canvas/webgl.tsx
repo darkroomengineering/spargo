@@ -3,15 +3,12 @@
 import { OrthographicCamera } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
-import { useCanvas } from '@/webgl/hooks/use-canvas'
 import { Content } from '../content'
 import { PostProcessing } from '../postprocessing'
 import { RAF } from '../raf'
 import s from './webgl.module.css'
 
 export function WebGLCanvas() {
-  const { WebGLTunnel, DOMTunnel } = useCanvas()
-
   return (
     <div className={s.webgl} id="webgl">
       <Canvas
@@ -38,11 +35,9 @@ export function WebGLCanvas() {
           />
           <RAF />
           <PostProcessing />
-          <WebGLTunnel.Out />
           <Content />
         </Suspense>
       </Canvas>
-      <DOMTunnel.Out />
     </div>
   )
 }
