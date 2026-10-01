@@ -16,7 +16,7 @@
         "react": "19.2.7",
         "react-colorful": "^5.6.1",
         "react-dom": "19.2.7",
-        "tempus": "1.0.0-dev.17",
+        "tempus": "1.0.0",
         "three": "0.184.0",
         "zod": "^4.4.3",
         "zustand": "^5.0.14",
@@ -778,7 +778,7 @@
 
     "tapable": ["tapable@2.3.3", "", {}, "sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A=="],
 
-    "tempus": ["tempus@1.0.0-dev.17", "", { "peerDependencies": { "react": ">=17.0.0" }, "optionalPeers": ["react"] }, "sha512-Umj1ILQ+4Shq84SmCR24VrVjBjfHMCVMAawI1v+BO0GEsXpNfhULl1V8zt6v6d1voDiaqXH61DUG5nquGC9Kag=="],
+    "tempus": ["tempus@1.0.0", "", { "peerDependencies": { "react": ">=17.0.0" }, "optionalPeers": ["react"] }, "sha512-yAtEKgbPwrenbvi4dvEFDUADRSZ5cHFqHIeFWQFEN5yrIRNhuBIl4lbTcukgy7KVgnr2qEOGabRixKQe0SCF9w=="],
 
     "three": ["three@0.184.0", "", {}, "sha512-wtTRjG92pM5eUg/KuUnHsqSAlPM296brTOcLgMRqEeylYTh/CdtvKUvCyyCQTzFuStieWxvZb8mVTMvdPyUpxg=="],
 
