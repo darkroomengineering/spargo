@@ -3,7 +3,7 @@
 version: 2
 updates:
   # JavaScript dependencies (package.json + bun.lock)
-  - package-ecosystem: "npm"
+  - package-ecosystem: "bun"
     directory: "/"
     schedule:
       interval: "weekly"
